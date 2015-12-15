@@ -14,4 +14,4 @@ The Human Activity Recognition Using Smartphones Data Set was downloaded from [h
 5) Append subjectID, ActivityName, and ActivityLabel values to `meansd.data`
 6) Calculate average of each mean or standard deviation variable in `meansd.data`, grouped by subject and activity, and save to `summary` dataframe (180 rows x 69 columns)
 7) Apply `melt` and `spread` functions to reshape `summary`, saved to `tidydata` dataframe (5940 rows x 6 columns)
-8) Output `tidydata` dataframe as `tidydata.txt`
+8) Output `tidydata` dataframe as `tidydata.csv`
