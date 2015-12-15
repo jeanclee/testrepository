@@ -1,0 +1,17 @@
+---
+title: ''
+output: html_document
+---
+
+The Human Activity Recognition Using Smartphones Data Set was downloaded from [https://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones](https://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones) and unzipped to a subfolder named 'har_data'. 
+
+`run_analysis.R` performs the following operations to produce the tidy dataset in `tidy_data.txt`: 
+
+1) Import the test and training sets, activity labels, and subject labels, as well as the feature and activity list
+2) Combine the test and training sets into the `all.data` dataframe (10299 rows x 561 columns)
+3) Clean variable names in feature list and append variable names to all.dadta
+4) Extract variables reporting mean or standard deviation values for a feature into the `meansd.data` dataframe (10299 rows x 66 columns)
+5) Append subjectID, ActivityName, and ActivityLabel values to `meansd.data`
+6) Calculate average of each mean or standard deviation variable in `meansd.data`, grouped by subject and activity, and save to `summary` dataframe (180 rows x 69 columns)
+7) Apply `melt` and `spread` functions to reshape `summary`, saved to `tidydata` dataframe (5940 rows x 6 columns)
+8) Output `tidydata` dataframe as `tidydata.txt`
