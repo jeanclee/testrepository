@@ -9,8 +9,10 @@
 
 ###### set up 
 
+library(plyr)
 library(dplyr)
 library(reshape2)
+library(tidyr)
 
 # import test and training datasets, activity labels, and subjects
 features <- read.table("har_data/features.txt")
@@ -34,6 +36,8 @@ View(features)
 ### 1) combine test and training datasets; verify with record counts
 
 nrow(testdata) + nrow(traindata)
+nrow(testdata)
+nrow(traindata)
 
 all.data <- rbind(testdata,traindata)
 all.activity <- rbind(testactivity, trainactivity)
@@ -98,10 +102,14 @@ str(meansd.data)
 # average of each mean/standard deviation variable grouped by subject and activity 
 summary <- meansd.data %>% group_by(ActivityLabel,ActivityName,subjectID) %>% summarize_each(funs(mean))
 
-# melt data and create tidy dataset
+# reshape (melt, cast) and output tidy dataset
 tidy_data <- melt(summary, id=c("ActivityLabel","ActivityName","subjectID"))
+tidy_data <- tidy_data %>%  mutate(measure = gsub('^.+(Mean|Std).*','\\1', variable))
+tidy_data <- tidy_data %>%  mutate(variable = gsub('Meanvar|Stdvar','',variable))
+tidy_data <- tidy_data %>% spread(measure,value)
+tidy_data <- rename(tidy_data, c("Mean" = "AvgMean", "Std" = "AvgStd"))
 str(tidy_data)
-write.table(tidy_data, "tidy_data.CSV", sep=",", row.names=FALSE)
 
+write.table(tidy_data, "tidy_data.CSV", sep=",", row.names=FALSE)
 
                        

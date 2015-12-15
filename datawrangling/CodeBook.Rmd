@@ -1,0 +1,76 @@
+---
+title: "Codebook for tidydata.txt"
+output: html_document
+---
+
+### Summary
+The [Human Activity Recognition Using Smartphones Data Set](https://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones) was built from the recordings of 30 subjects performing activities of daily living (ADL) while carrying a waist-mounted smartphone with embedded inertial sensors. The dataset includes 10299 total observations (divided into test and training sets of 2947 and 7352 observations, respectively), each representing a subject performing one of six activities. For each observation the dataset includes a 561-feature vector containing time and frequency domain variables, the activity performed, and an identifier for the subject. Additional documentation on the dataset is available at the repository webpage linked above. 
+
+
+`tidydata.txt` reports mean and standard deviation measures for 33 variables derived from the Human Activity Recognition dataset. Measures are averaged by subject and activity type over the combined training and test set. The file contains 5940 records, representing data for 30 subjects x 6 activity types x 33 variables.
+
+### Data description
+
+| Variable      | Description                                                     |
+|---------------|-----------------------------------------------------------------|
+| ActivityLabel | Numeric identifier (1-6) of activity                            |
+| ActivityName  | Name of activity (see below for activity types)                 |
+| subjectID     | Numeric identifier (1-30) of subject in experiment              |
+| variable      | Variable name (see below for variables included)                |
+| AvgMean       | Average of variable mean for activity and subject               |
+| AvgStd        | Average of variable standard deviation for activity and subject |
+
+
+#### Activity types in Human Activity Recognition dataset
+| ActivityLabel | ActivityName       |
+|---------------|--------------------|
+| 1             | WALKING            |
+| 2             | WALKING_UPSTAIRS   |
+| 3             | WALKING_DOWNSTAIRS |
+| 4             | SITTING            |
+| 5             | STANDING           |
+| 6             | LAYING             |
+
+
+#### Variables
+| Variable  name      |
+|----------------------|
+| fBodyAccJerkX        |
+| fBodyAccJerkY        |
+| fBodyAccJerkZ        |
+| fBodyAccMag          |
+| fBodyAccX            |
+| fBodyAccY            |
+| fBodyAccZ            |
+| fBodyBodyAccJerkMag  |
+| fBodyBodyGyroJerkMag |
+| fBodyBodyGyroMag     |
+| fBodyGyroX           |
+| fBodyGyroY           |
+| fBodyGyroZ           |
+| tBodyAccJerkMag      |
+| tBodyAccJerkX        |
+| tBodyAccJerkY        |
+| tBodyAccJerkZ        |
+| tBodyAccMag          |
+| tBodyAccX            |
+| tBodyAccY            |
+| tBodyAccZ            |
+| tBodyGyroJerkMag     |
+| tBodyGyroJerkX       |
+| tBodyGyroJerkY       |
+| tBodyGyroJerkZ       |
+| tBodyGyroMag         |
+| tBodyGyroX           |
+| tBodyGyroY           |
+| tBodyGyroZ           |
+| tGravityAccMag       |
+| tGravityAccX         |
+| tGravityAccY         |
+| tGravityAccZ         |
+
+
+### Citation
+Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. A Public Domain Dataset for Human Activity Recognition Using Smartphones. 21th European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning, ESANN 2013. Bruges, Belgium 24-26 April 2013.
+
+
