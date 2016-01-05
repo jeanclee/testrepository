@@ -1,0 +1,75 @@
+---
+title: "Gapminder Total Fertility EDA"
+output: html_document
+---
+
+```{r, echo=FALSE,  warning=FALSE}
+
+library(ggplot2)
+load("gapminder_totalfertility.Rdata")
+
+
+qplot(x = Fertility.Rate, 
+      data = subset(tf_tidy, Year %in% c("1800", "1900", "1950", "2000", "2015")), 
+      binwidth = .5, geom='freqpoly', 
+      color=Year,
+      main="National fertility rates over time: 1800-2015",
+      xlab = "Fertility rate (children per woman)",
+      ylab="Number of countries") +
+  scale_x_continuous(limits = c(0, 10),
+                     breaks = seq(0, 10, .5)) +
+  scale_y_continuous(breaks=seq(0,60,10))
+
+#ggsave("fertility_rate_over_time.png")
+
+tf_year <- subset(subset(tf_tidy, Year %in% c("1800", "1900", "1950", "2000", "2015")))
+
+by(tf_year$Fertility.Rate, tf_year$Year, summary)
+
+```
+
+
+```{r, echo=FALSE,  warning=FALSE}
+## 2015 fertility rates by region
+
+
+
+
+
+qplot(x=Region, y=Fertility.Rate,
+      data = subset(tf_tidy, Year=="2015"), 
+      geom='boxplot',
+      ylab="Fertility rate (children per woman)",
+      main="National fertility rates by region, 2015") +
+  scale_y_continuous(breaks=seq(0,9,0.5))
+
+tf_2015 <- subset(subset(tf_tidy, Year =="2015"))
+
+
+by(tf_2015$Fertility.Rate, tf_2015$Region, summary)
+
+#ggsave("fertility_rate_2015_by_region.png")
+
+# changes in fertility rate, East Asia & Pacific
+
+
+
+qplot(x=Year, y=Fertility.Rate,
+      data = subset(tf_tidy, Region="East Asia & Pacific", Year %in% c("1800", "1900", "1950", "1960","1970","1980","1990","2000", "2010")), 
+      geom='boxplot',
+      ylab="Fertility rate (children per woman)",
+      main="East Asia & Pacific national fertility rates over time: 1800-2015") +
+  scale_y_continuous(breaks=seq(0,9,0.5))
+
+tf_eap <- subset(tf_tidy, Region="East Asia & Pacific", Year %in% c("1800", "1900", "1950", "1960","1970","1980","1990","2000", "2010"))
+                 
+by(tf_eap$Fertility.Rate, tf_eap$Year, summary)
+
+#ggsave("fertility_rate_EAP_over_time.png")
+
+```
+
+
+
+
+
